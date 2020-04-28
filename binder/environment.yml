@@ -51,7 +51,6 @@ dependencies:
  - xesmf
  - xpublish
  - zarr
- # now xarray specific packages
  - eofs
  - xhistogram
  - xrft
