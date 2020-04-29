@@ -3,8 +3,7 @@ channels:
  - conda-forge
 dependencies:
  - python=3.7*
- - pangeo-notebook=2020.04.25
- - distributed=2.15.1
+ - pange-notebook=2020.04.28
  - pip=20
  - cartopy
  - dask-ml
@@ -51,6 +50,7 @@ dependencies:
  - xarray
  - xesmf
  - xpublish
+# additional packages on top of pangeo notebook
  - zarr
  - eofs
  - xhistogram
