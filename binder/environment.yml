@@ -57,3 +57,5 @@ dependencies:
  - xrft
  - xgcm
  - cmip6_preprocessing
+ - seaborn
+ - nc-time-axis
