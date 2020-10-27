@@ -45,6 +45,7 @@ dependencies:
  - scikit-image
  - scikit-learn
  - scipy
+ - seaborn
  - sparse
  - tiledb-py
  - xarray
