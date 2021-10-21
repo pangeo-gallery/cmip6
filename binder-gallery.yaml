@@ -4,6 +4,6 @@ description: >-
   Examples of analysis of Google Cloud CMIP6 data using Pangeo tools.
 gallery_repository: pangeo-gallery/pangeo-gallery
 binder_url: "https://binder.pangeo.io"
-binder_repo: pangeo-gallery/default-binder
-binder_ref: master
+binder_repo: pangeo-data/pangeo-docker-images
+binder_ref: 2021.10.19
 binderbot_target_branch: binderbot-built
