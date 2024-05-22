@@ -1,0 +1,12 @@
+name: cmip6
+channels:
+  - conda-forge
+dependencies:
+  - zarr
+  - xarray
+  - s3fs
+  - gcsfs
+  - cftime
+  - nc-time-axis
+  - papermill
+  - matplotlib
