@@ -23,6 +23,7 @@ jobs:
               with:                
                 activate-environment: cmip6
                 environment-file: environment.yml
+                auto-activate-base: false
 
             - name: verify env
               run: |
@@ -40,8 +41,7 @@ jobs:
               if: steps.changed-ipynb-files.outputs.any_changed == 'true'
               env:
                 ALL_CHANGED_FILES: ${{ steps.changed-ipynb-files.outputs.all_changed_files }}
-              run: |
-                conda activate cmip6
+              run: |                
                 for file in ${ALL_CHANGED_FILES}; do
                     echo "$file was changed"
                     papermill -k cmip6 $file -
