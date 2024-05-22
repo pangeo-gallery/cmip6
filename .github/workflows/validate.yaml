@@ -20,13 +20,14 @@ jobs:
 
             - name: setup env
               uses: conda-incubator/setup-miniconda@v3.0.4
-              with:
-                miniforge-variant: Miniforge3          
-                mamba-version: "*"
-                channels: conda-forge,nodefaults
-                channel-priority: true
+              with:                
                 activate-environment: cmip6
                 environment-file: environment.yml
+
+            - name: verify env
+              run: |
+                conda info
+                conda list
 
             - name: get changed ipynb files
               id: changed-ipynb-files
@@ -40,6 +41,7 @@ jobs:
               env:
                 ALL_CHANGED_FILES: ${{ steps.changed-ipynb-files.outputs.all_changed_files }}
               run: |
+                conda activate cmip6
                 for file in ${ALL_CHANGED_FILES}; do
                     echo "$file was changed"
                     papermill -k cmip6 $file -
