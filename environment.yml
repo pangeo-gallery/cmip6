@@ -1,4 +1,4 @@
-name: cmip6
+name: cmip6env
 channels:
   - conda-forge
 dependencies:
