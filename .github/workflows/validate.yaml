@@ -1,0 +1,58 @@
+name: validate
+on:  
+  push:
+    branches:
+      - master
+    paths:
+      - '**.ipynb'      
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**.ipynb'      
+
+jobs:
+    build:
+        name: validate notebooks
+        runs-on: ubuntu-latest
+
+        defaults:
+            run:
+              shell: bash -l {0}
+        
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: setup env
+              uses: conda-incubator/setup-miniconda@v3
+              with:                
+                activate-environment: cmip6env
+                channels: conda-forge
+                mamba-version: "*"
+                channel-priority: strict
+                auto-update-conda: false
+                environment-file: environment.yml
+                auto-activate-base: false
+
+            - name: verify env
+              run: |
+                conda info
+                conda list
+                python -m ipykernel install --user --name cmip6env
+
+            - name: get changed ipynb files
+              id: changed-ipynb-files
+              uses: tj-actions/changed-files@v44
+              with:          
+                files: |
+                    **.ipynb
+
+            - name: validate all changed ipynb files
+              if: steps.changed-ipynb-files.outputs.any_changed == 'true'
+              env:
+                ALL_CHANGED_FILES: ${{ steps.changed-ipynb-files.outputs.all_changed_files }}
+              run: |                
+                for file in ${ALL_CHANGED_FILES}; do
+                    echo "$file was changed"
+                    papermill -k cmip6env $file -
+                done
