@@ -9,4 +9,5 @@ dependencies:
   - cftime
   - nc-time-axis
   - papermill
+  - notebook
   - matplotlib
