@@ -22,6 +22,10 @@ jobs:
               uses: conda-incubator/setup-miniconda@v3
               with:                
                 activate-environment: cmip6env
+                channels: conda-forge
+                mamba-version: "*"
+                channel-priority: strict
+                auto-update-conda: false
                 environment-file: environment.yml
                 auto-activate-base: false
 
