@@ -38,6 +38,7 @@ jobs:
               run: |
                 conda info
                 conda list
+                python -m ipykernel install --user --name cmip6env
 
             - name: get changed ipynb files
               id: changed-ipynb-files
